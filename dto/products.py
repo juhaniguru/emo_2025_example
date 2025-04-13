@@ -1,6 +1,9 @@
-from typing import Optional
+from typing import Optional, List
 
 from pydantic import BaseModel
+
+from dto.categories import CategoryDto
+from dto.reviews import ReviewDto
 
 
 class AddProductReq(BaseModel):
@@ -14,4 +17,10 @@ class ProductDto(BaseModel):
     id: int
     name: str
     description: Optional[str] = None
-    category_id: int
+    category: CategoryDto
+
+
+class ProductWithReviews(ProductDto):
+    review: List[ReviewDto]
+
+

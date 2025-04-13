@@ -13,11 +13,17 @@ class ProductsService:
     def __init__(self, repo: ProductRepo):
         self.repo = repo
 
+
+    def get_product(self, product_id):
+        data = self.repo.get_by_id(product_id)
+
+        return data
+
     def get_products(self):
         return self.repo.get_all()
 
     def add_product(self, req_data: AddProductReq):
-        product = models.Product(**req_data.dict())
+        product = models.Product(**req_data.model_dump())
         self.repo.add(product)
         return product
 

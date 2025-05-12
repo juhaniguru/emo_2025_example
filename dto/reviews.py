@@ -25,3 +25,9 @@ class ReviewDto(BaseModel):
     date_reviewed: datetime
     message: Optional[str]
     user: Optional[UserDto]
+
+
+class AddReviewDto(BaseModel):
+    rating: float
+    message: Optional[str]
+
